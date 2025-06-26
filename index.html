@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vertentes Contábeis</title>
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fontes refinadas -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Ícones Google Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #E6FFFE;
+      color: #003f5e;
+      font-family: 'Lato', sans-serif;
+      padding-top: 90px;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #005678cc, #003f5ecc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 50px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      z-index: 10000;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .logo img {
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-center ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #E6FFFE;
+      transition: color 0.4s, border-bottom 0.4s;
+      padding-bottom: 4px;
+      border-bottom: 3px solid transparent;
+      font-family: 'Lato', sans-serif;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #37af78;
+      border-bottom: 3px solid #37af78;
+    }
+
+    .botao {
+      background-color: #37af78;
+      color: #E6FFFE;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.4s, box-shadow 0.4s;
+      font-family: 'Lato', sans-serif;
+      box-shadow: 0 4px 15px rgba(55,175,120,0.5);
+    }
+    .botao:hover {
+      background-color: #2a8c59;
+      box-shadow: 0 6px 20px rgba(42,140,89,0.7);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 80px auto 120px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #003f5e;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #005678dd;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      color: #E6FFFE;
+      padding: 40px 30px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:nth-child(1) {
+      background: linear-gradient(145deg, #37af78, #2a8c59);
+    }
+    .card:nth-child(2) {
+      background: linear-gradient(145deg, #3491cf, #2674a8);
+    }
+    .card:nth-child(3) {
+      background: linear-gradient(145deg, #005678, #003f5e);
+    }
+    .card:nth-child(4) {
+      background-color: #E6FFFE;
+      color: #005678;
+      box-shadow: 0 8px 18px rgba(55,175,120,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+
+    /* Ícones dentro dos cards */
+    .card .material-icons {
+      font-size: 48px;
+      margin-bottom: 15px;
+      opacity: 0.8;
+      transition: opacity 0.4s;
+    }
+    .card:hover .material-icons {
+      opacity: 1;
+      color: #d4f5e9;
+    }
+
+    footer {
+      padding: 25px 10px;
+      text-align: center;
+      background-color: #003f5e;
+      color: #E6FFFE;
+      font-size: 1rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 0.05em;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+    }
+
+    .instagram-link {
+      color: #3491cf;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .instagram-link:hover {
+      color: #2674a8;
+    }
+
+    .whatsapp-link {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #25d366;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.6);
+    }
+    .whatsapp-link:hover {
+      background-color: #1ebe57;
+      box-shadow: 0 6px 18px rgba(30,190,87,0.8);
+    }
+
+    /* Responsividade para menu */
+    @media (max-width: 820px) {
+      nav {
+        padding: 15px 25px;
+        font-size: 1rem;
+      }
+      .nav-center ul {
+        gap: 20px;
+      }
+      .botao {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 550px) {
+      .nav-center ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="imagens/AVATAR_VERTENTES_.png" alt="Logo Vertentes Contábeis" />
+    </div>
+    <div class="nav-center">
+      <ul>
+        <li><a href="#inicio" class="active">Início</a></li>
+        <li><a href="#solucoes">Soluções</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <a class="botao" href="https://wa.me/5571988436966" target="_blank" rel="noopener noreferrer">FALAR COM ESPECIALISTA</a>
+  </nav>
+
+  <section id="inicio">
+    <h1>Bem-vindo à Vertentes Contábeis</h1>
+    <p>Soluções para transformar sua gestão financeira</p>
+  </section>
+
+  <section id="solucoes">
+    <h2>Soluções</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="material-icons">insights</span>
+        Consultoria Estratégica
+      </div>
+      <div class="card">
+        <span class="material-icons">account_balance_wallet</span>
+        Planejamento Tributário
+      </div>
+      <div class="card">
+        <span class="material-icons">account_balance</span>
+        Gestão Contábil
+      </div>
+      <div class="card" style="background-color: #E6FFFE; color: #005678; box-shadow: 0 8px 18px rgba(55,175,120,0.3);">
+        <span class="material-icons" style="color:#005678;">support_agent</span>
+        Atendimento Personalizado
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>Somos uma empresa comprometida com a excelência contábil e a construção de negócios sólidos.</p>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p><strong>Instagram:</strong>
+      <a href="https://www.instagram.com/vertentescontabeis" target="_blank" rel="noopener noreferrer" class="instagram-link">@vertentescontabeis</a>
+    </p>
+    <a href="https://wa.me/5571988436966" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+      Fale conosco pelo WhatsApp
+    </a>
+    <div style="margin-top: 20px;">
+      <img src="imagens/logopadrao.png" alt="Símbolo da empresa" style="height: 60px;" />
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Vertentes Contábeis</p>
+  </footer>
+
+  <script>
+    // Script para destacar o item ativo do menu conforme o scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
